@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="K:\zhrachboard\venvy"
+VIRTUAL_ENV="C:\Users\Igor\PycharmProjects\zhrachboard\venvy"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
