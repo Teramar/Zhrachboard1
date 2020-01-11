@@ -1,4 +1,4 @@
-#!C:\Users\Igor\PycharmProjects\zhrachboard\venvy\Scripts\python.exe
+#!C:\Users\Igor\PycharmProjects\zhrachkaboard\venvy\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip3'
 __requires__ = 'pip==19.0.3'
 import re
