@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
 app = Flask(__name__)
 
 @app.route('/')
@@ -7,9 +7,6 @@ def hello_world():
 @app.route('/data')
 def data():
     diat = {'name' : 'Igor', 'spacebar':' ','amount' : '24'}
-    resp = Response(response = diat.values(),
-                    status = 200,
-                    mimetype = "application/json")
-    return resp
+    return jsonify(diat)
 if __name__ == '__main__':
     app.run()
