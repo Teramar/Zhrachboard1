@@ -16,21 +16,18 @@ def data() :
     return resp
 
 
-class CheckR(MethodView) :
-
+class Check_R(MethodView) :
     def get(self) :
-        pmtd = ({"method" : "post"})
-        if request.method == 'POST' :
-            return Response(response=json.dumps(pmtd), status=200, mimetype="application/json")
+        return {
+            'method' : 'get'
+        }
 
     def post(self) :
-        gmtd = {"method" : "get"}
-        if request.method == 'GET' :
-            return Response(response=json.dumps(gmtd), status=200, mimetype="application/json")
-
-    methods = ['GET', 'POST']
-    app.add_url_rule('/checker', view_func=checkr.as_view('checkr'))
+        return {
+            'method' : 'post'
+        }
 
 
+app.add_url_rule('/checkapproute', view_func=Check_R.as_view('checkr'), methods=['GET', 'POST'])
 if __name__ == '__main__' :
     app.run()
