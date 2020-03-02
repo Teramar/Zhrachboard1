@@ -29,5 +29,6 @@ class Check_R(MethodView) :
 
 
 app.add_url_rule('/checkapproute', view_func=Check_R.as_view('checkr'), methods=['GET', 'POST'])
+
 if __name__ == '__main__' :
     app.run()
