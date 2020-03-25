@@ -1,5 +1,5 @@
 import flask
-from flask import json
+from flask import json, request
 from flask.views import MethodView
 
 
@@ -7,7 +7,7 @@ def hello_world() :
     return flask.Response('тут хуйня<br/>какаето')
 
 
-def data():
+def data() :
     diat = {'name' : 'Igor ', 'amount' : '24'}
     resp = flask.Response(response=json.dumps(diat), status=200, mimetype="application/json")
     return resp
@@ -23,9 +23,12 @@ class Check_R(MethodView) :
         return {
             'method' : 'post'
         }
-class comp_arr(MethodView):
-    def get(self)  :
-        lst = [1, 2, 3, 4, 7, 10, 14, 22, 23, 24]
+
+
+class comp_arr(MethodView) :
+    def get(self) :
+        # lst = [1,2,3,4,7,10,14,22,23,24]
+        lst = request.args.getlist('arr')
         result = []
         tmp = []
         for i, v in enumerate(lst) :
@@ -50,8 +53,7 @@ class comp_arr(MethodView):
 
                 else :
                     result.append(f'{tmp[0]}-{tmp[-1]}')
-                    print(', '.join(map(str, result)))
-        return {
-            "request" : [1, 2, 3, 4, 7, 10, 14, 22, 23, 24],
-            "compressed" : &&&&
-            }
+                    # print(', '.join(map(str, result)))
+                arrz = {'array' : lst, 'compressed array' : (', '.join(map(str, result)))}
+                responz = flask.Response(response=json.dumps(arrz), status=200, mimetype="application/json")
+                return responz
