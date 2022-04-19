@@ -25,35 +25,29 @@ class Check_R(MethodView) :
         }
 
 
-class comp_arr(MethodView) :
-    def get(self) :
-        # lst = [1,2,3,4,7,10,14,22,23,24]
-        lst = request.args.getlist('arr')
+class comp_arr(MethodView):
+    def get(self):
+        #lst = [1,2,3,4,7,10,14,22,23,24]
+        lst = [input('Enter the array elements: ')]
         result = []
         tmp = []
-        for i, v in enumerate(lst) :
-            if tmp :
-                if v == tmp[-1] + 1 :
+        for i, v in enumerate(lst):
+            if tmp:
+                if v == tmp[-1] + 1:
                     tmp.append(v)
-
-                else :
-                    if len(tmp) == 1 :
+                else:
+                    if len(tmp) == 1:
                         result.append(tmp[0])
-
-                    else :
+                    else:
                         result.append(f'{tmp[0]}-{tmp[-1]}')
-
                     tmp = [v]
-            else :
+            else:
                 tmp.append(v)
-
-            if i == len(lst) - 1 :
-                if len(tmp) == 1 :
+            if i == len(lst) - 1:
+                if len(tmp) == 1:
                     result.append(tmp[0])
-
-                else :
+                else:
                     result.append(f'{tmp[0]}-{tmp[-1]}')
-                    # print(', '.join(map(str, result)))
-                arrz = {'array' : lst, 'compressed array' : (', '.join(map(str, result)))}
+                arrz = {'compressed array' : (', '.join(map(str, result)))}
                 responz = flask.Response(response=json.dumps(arrz), status=200, mimetype="application/json")
                 return responz
